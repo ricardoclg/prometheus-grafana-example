@@ -1,0 +1,41 @@
+{
+    "title": "Python App Monitoring",
+    "panels": [
+      {
+        "title": "Requests Rate",
+        "type": "graph",
+        "targets": [{
+          "expr": "rate(http_requests_total[1m])",
+          "legendFormat": "{{method}} {{endpoint}}"
+        }],
+        "gridPos": {"x": 0, "y": 0, "w": 12, "h": 6}
+      },
+      {
+        "title": "Temperature",
+        "type": "gauge",
+        "targets": [{
+          "expr": "temperature_celsius",
+          "legendFormat": "Current temp: {{value}}°C"
+        }],
+        "gridPos": {"x": 12, "y": 0, "w": 6, "h": 6}
+      },
+      {
+        "title": "Request Latency",
+        "type": "heatmap",
+        "targets": [{
+          "expr": "histogram_quantile(0.95, sum(rate(http_request_latency_seconds_bucket[1m])) by (le))",
+          "legendFormat": "P95 latency"
+        }],
+        "gridPos": {"x": 0, "y": 6, "w": 12, "h": 6}
+      },
+      {
+        "title": "Errors",
+        "type": "stat",
+        "targets": [{
+          "expr": "rate(http_errors_total[1m])",
+          "legendFormat": "Error rate"
+        }],
+        "gridPos": {"x": 12, "y": 6, "w": 6, "h": 6}
+      }
+    ]
+  }
