@@ -5,11 +5,6 @@
 
 -----
 
-## Installation
-
-```console
-```
-
 ## Configuration
 
 prometheus.yml
@@ -48,8 +43,7 @@ docker-compose up -d
 Prometheus: http://localhost:9090
 Grafana: http://localhost:3000 (usuário: admin, senha: admin)
 
-Add Prometheus datasource in grafana (URL: http://prometheus:9090)
-
+4. Add Prometheus datasource in grafana (URL: http://prometheus:9090)
 Import dashboard from JSON file
 
 
